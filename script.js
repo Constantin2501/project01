@@ -1,15 +1,14 @@
-let title = 'project01'
-let screens = 'Простые, Сложные, Интерактивные'
-let screenPrice = 10
-let rollback = 50
-let fullPrice = 100
-let adaptive = true
+let num = 266219
+let array = ("" + num).split("")
+let sum = 1
 
-console.log(typeof title)
-console.log(typeof fullPrice)
-console.log(typeof adaptive)
-console.log(screens.length)
-console.log('"Стоимость разработки сайта' + ' ' + screenPrice + ' ' + 'рублей/долларов/гривен/юани"' + ' ' + 'и "Стоимость разработки сайта' + ' ' + fullPrice + ' ' + 'рублей/долларов/гривен/юани"')
-console.log(screens.toLowerCase().split(","))
-console.log(fullPrice * rollback / 100)
+for (let i = 0; i < array.length; i++) {
+  sum *= Number(array[i])
 
+}
+
+console.log(sum)
+
+sum = sum ** 3
+
+console.log(("" + sum).slice(0, 2))
