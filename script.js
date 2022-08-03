@@ -10,15 +10,16 @@ let service2 = prompt('Какой дополнительный тип услуг
 let servicePrice2 = +prompt('Сколько это будет стоить?')
 let fullPrice = screenPrice + servicePrice1 + servicePrice2
 let servicePercentPrice
-let rollback = 50
-
+let rollback
 
 switch (true) {
   case fullPrice >= 30000:
     servicePercentPrice = Math.floor(fullPrice - (fullPrice / 100 * 10))
+    console.log('Даем скидку в 10%')
     break;
   case fullPrice >= 15000 && fullPrice < 30000:
     servicePercentPrice = Math.floor(fullPrice - (fullPrice / 100 * 5))
+    console.log('Даем скидку в 5%')
     break;
   case fullPrice < 15000 && fullPrice >= 0:
     console.log('скидка не предусмотрена')
@@ -29,7 +30,6 @@ switch (true) {
 }
 
 
-console.log(screens)
 console.log(servicePercentPrice)
 
 
