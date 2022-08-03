@@ -1,39 +1,16 @@
 
 
-let title = 'project01'
-let screens = 'Простые, Сложные, Интерактивные'
-let screenPrice = 10
+let title = prompt('Как называется ваш проект?')
+let screens = prompt('Какие типы экранов нужно разработать?')
+let screenPrice = +prompt('Сколько будет стоить данная работа?')
+let adaptive = confirm('Нужен ли адаптив на сайте?')
+let service1 = prompt('Какой дополнительный тип услуги нужен?')
+let servicePrice1 = +prompt('Сколько это будет стоить?')
+let service2 = prompt('Какой дополнительный тип услуги нужен?')
+let servicePrice2 = +prompt('Сколько это будет стоить?')
+let fullPrice = screenPrice + servicePrice1 + servicePrice2
+let servicePercentPrice
 let rollback = 50
-let fullPrice = 100
-let adaptive = true
-let service1 = ''
-let service2 = ''
-let servicePrice1 = 0
-let servicePrice2 = 0
-let servicePercentPrice = 0
-
-
-title = prompt('Как называется ваш проект?')
-screens = prompt('Какие типы экранов нужно разработать?')
-
-switch (screens) {
-  case 'простые':
-    break;
-  case 'сложные':
-    break;
-  case 'интерактивные':
-    break;
-  default:
-    alert('Выберите тип экрана: простые, сложные, интерактивные');
-}
-
-screenPrice = +prompt('Сколько будет стоить данная работа?')
-adaptive = confirm('Нужен ли адаптив на сайте?')
-service1 = prompt('Какой дополнительный тип услуги нужен?')
-servicePrice1 = +prompt('Сколько это будет стоить?')
-service2 = prompt('Какой дополнительный тип услуги нужен?')
-servicePrice2 = +prompt('Сколько это будет стоить?')
-fullPrice = screenPrice + servicePrice1 + servicePrice2
 
 
 switch (true) {
@@ -51,6 +28,8 @@ switch (true) {
     break;
 }
 
+
+console.log(screens)
 console.log(servicePercentPrice)
 
 
