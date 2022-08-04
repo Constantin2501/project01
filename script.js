@@ -9,8 +9,8 @@ let servicePrice1 = +prompt('Сколько это будет стоить?')
 let service2 = prompt('Какой дополнительный тип услуги нужен?')
 let servicePrice2 = +prompt('Сколько это будет стоить?')
 let rollback = 10
-let fullPrice = screenPrice + servicePrice1 + servicePrice2
-let servicePercentPrice = fullPrice - (fullPrice * (rollback / 10))
+let fullPrice
+let servicePercentPrice
 let allServicePrices
 
 
@@ -34,16 +34,15 @@ const getRollbackMessage = function(price) {
 
 
 const getAllServicePrices = function() {
-  allServicePrices = servicePrice1 + servicePrice2
+  return servicePrice1 + servicePrice2
 }
 
 function getFullPrice() {
-  fullPrice = screenPrice + allServicePrices
+  return screenPrice + allServicePrices
 }
 
 function getTitle() {
-  title = (title.trim()).toLowerCase() 
-  title = title[0].toUpperCase() + title.substring(1)
+  return title.trim()[0].toUpperCase() + title.trim().substr(1).toLowerCase()
   }
 
 function getServicePercentPrices() {
