@@ -62,12 +62,15 @@ showTypeOf(adaptive)
 
 
 
+console.log(getRollbackMessage(fullPrice))
 console.log(typeof title)
-console.log(typeof fullPrice)
+console.log(typeof screenPrice)
 console.log(typeof adaptive)
-console.log(screens)
 
 
+console.log(screens.length)
+console.log(servicePercentPrice)
 
+console.log('"Стоимость разработки сайта' + ' ' + screenPrice + ' ' + 'рублей/долларов/гривен/юани"' + ' ' + 'и "Стоимость разработки сайта' + ' ' + fullPrice + ' ' + 'рублей/долларов/гривен/юани"')
 
 
