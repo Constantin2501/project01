@@ -50,12 +50,15 @@ function getServicePercentPrices() {
 }
 
 
+allServicePrices = getAllServicePrices()
+fullPrice = getFullPrice()
+servicePercentPrice = getAllServicePrices()
+title = getTitle()
+
 
 showTypeOf(title)
 showTypeOf(screenPrice)
 showTypeOf(adaptive)
-getRollbackMessage()
-getServicePercentPrices()
 
 
 
