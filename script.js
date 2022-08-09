@@ -20,9 +20,11 @@ const appData = {
 
   appData.adaptive = confirm('Нужен ли адаптив на сайте?')
   },
+
   isNumber: function(num) {
     return !isNaN(parseFloat(num)) && isFinite(num)
   },
+
   getAllServicePrices: function() {
     let sum = 0
   
@@ -44,15 +46,19 @@ const appData = {
   
     return sum
   },
+
   getFullPrice: function() {
     return +appData.screenPrice + appData.allServicePrices
   },
+
   getServicePercentPrices: function() {
     return appData.fullPrice - (appData.fullPrice * (appData.rollback / 100))
   },
+
   getTitle: function() {
     return appData.title.trim()[0].toUpperCase() + appData.title.trim().substring(1).toLowerCase()
   },
+
   getRollbackMessage: function(price) {
     if (price >= 30000) {
       return 'Даем скидку в 10%'
@@ -63,6 +69,19 @@ const appData = {
     } else {
       return 'Что то пошло не так'
     }   
+  },
+
+  logger: function() {
+    console.log(appData.fullPrice);
+    console.log(appData.servicePercentPrice);
+  },
+  
+  start: function() {
+    appData.asking()
+    appData.allServicePrices = getAllServicePrices()
+    appData.fullPrice = getFullPrice()
+    appData.servicePercentPrice = getServicePercentPrices()
+    appData.title = getTitle()
   }
 
 }
@@ -73,14 +92,8 @@ const appData = {
 
 
 
-appData.asking()
-appData.allServicePrices = getAllServicePrices()
-appData.fullPrice = getFullPrice()
-appData.servicePercentPrice = getServicePercentPrices()
-appData.title = getTitle()
+appData.start()
 
-console.log(appData.fullPrice);
-console.log(appData.servicePercentPrice);
 
 
 
