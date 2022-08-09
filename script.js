@@ -1,13 +1,28 @@
-let title
-let screens
-let screenPrice
-let adaptive
-let rollback = 10
-let fullPrice
-let servicePercentPrice
-let allServicePrices
-let service1
-let service2
+
+const appData = {
+ title: '',
+ screens: '',
+ screenPrice: 0,
+ adaptive: true,
+ rollback: 10,
+ fullPrice: 0,
+ servicePercentPrice: 0,
+ allServicePrices: 0,
+ service1: '',
+ service2: '',
+ asking: function() {
+  appData.title = prompt('Как называется ваш проект?', 'Калькулятор верстки')
+  appData.screens = prompt('Какие типы экранов нужно разработать?', 'Простые, Сложные')
+
+  do {
+    appData.screenPrice = prompt('Сколько будет стоить данная работа?')
+  } while (!isNumber(appData.screenPrice)) 
+
+  appData.adaptive = confirm('Нужен ли адаптив на сайте?')
+  }
+
+
+}
 
 
 
@@ -16,16 +31,6 @@ const isNumber = function(num) {
 }
 
 
-const asking = function() {
-  title = prompt('Как называется ваш проект?', 'Калькулятор верстки')
-  screens = prompt('Какие типы экранов нужно разработать?', 'Простые, Сложные')
-
-  do {
-    screenPrice = prompt('Сколько будет стоить данная работа?')
-  } while (!isNumber(screenPrice)) 
-
-  adaptive = confirm('Нужен ли адаптив на сайте?')
-}
 
 
 const getAllServicePrices = function() {
@@ -35,9 +40,9 @@ const getAllServicePrices = function() {
     let price = 0
 
     if  (i === 0) {
-      service1 = prompt('Какой дополнительный тип услуги нужен?')
+      appData.service1 = prompt('Какой дополнительный тип услуги нужен?')
     } else if (i === 1) {
-      service2 = prompt('Какой дополнительный тип услуги нужен?')
+      appData.service2 = prompt('Какой дополнительный тип услуги нужен?')
     }
 
     do {
@@ -51,21 +56,18 @@ const getAllServicePrices = function() {
 }
 
 
-const showTypeOf = function(variable) {
-  console.log(variable, typeof variable)
-}
 
 function getFullPrice() {
-  return +screenPrice + allServicePrices
+  return +appData.screenPrice + appData.allServicePrices
 }
 
 function getServicePercentPrices() {
-  return fullPrice - (fullPrice * (rollback / 100))
+  return appData.fullPrice - (appData.fullPrice * (appData.rollback / 100))
 }
 
 
 function getTitle() {
-  return title.trim()[0].toUpperCase() + title.trim().substr(1).toLowerCase()
+  return appData.title.trim()[0].toUpperCase() + appData.title.trim().substr(1).toLowerCase()
   }
 
 
@@ -85,32 +87,18 @@ const getRollbackMessage = function(price) {
 
 
 
-asking()
-allServicePrices = getAllServicePrices()
-fullPrice = getFullPrice()
-servicePercentPrice = getServicePercentPrices()
-title = getTitle()
+appData.asking()
+appData.allServicePrices = getAllServicePrices()
+appData.fullPrice = getFullPrice()
+appData.servicePercentPrice = getServicePercentPrices()
+appData.title = getTitle()
+
+console.log(appData.fullPrice);
+console.log(appData.servicePercentPrice);
 
 
 
-showTypeOf(title)
-showTypeOf(screenPrice)
-showTypeOf(adaptive)
 
 
-console.log('allServicePrices', allServicePrices)
-
-
-console.log(getRollbackMessage(fullPrice))
-console.log(typeof title)
-console.log(typeof screenPrice)
-console.log(typeof adaptive)
-
-
-console.log(screens.length)
-console.log(servicePercentPrice)
-
-
-console.log('"Стоимость разработки сайта' + ' ' + screenPrice + ' ' + 'рублей/долларов/гривен/юани"' + ' ' + 'и "Стоимость разработки сайта' + ' ' + fullPrice + ' ' + 'рублей/долларов/гривен/юани"')
 
 
