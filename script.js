@@ -16,7 +16,7 @@ const appData = {
 
   do {
     appData.screenPrice = prompt('Сколько будет стоить данная работа?')
-  } while (!isNumber(appData.screenPrice)) 
+  } while (!appData.isNumber(appData.screenPrice)) 
 
   appData.adaptive = confirm('Нужен ли адаптив на сайте?')
   },
@@ -39,7 +39,7 @@ const appData = {
   
       do {
         price = +prompt('Сколько это будет стоить?')
-      } while (!isNumber(price))
+      } while (!appData.isNumber(price))
   
       sum += price
     }
@@ -74,14 +74,18 @@ const appData = {
   logger: function() {
     console.log(appData.fullPrice);
     console.log(appData.servicePercentPrice);
+    for (let key in appData) {
+      console.log( key + ':' + ' ' + appData[key]);
+    }
   },
   
   start: function() {
     appData.asking()
-    appData.allServicePrices = getAllServicePrices()
-    appData.fullPrice = getFullPrice()
-    appData.servicePercentPrice = getServicePercentPrices()
-    appData.title = getTitle()
+    appData.allServicePrices = appData.getAllServicePrices()
+    appData.fullPrice = appData.getFullPrice()
+    appData.servicePercentPrice = appData.getServicePercentPrices()
+    appData.title = appData.getTitle()
+    appData.logger()
   }
 
 }
