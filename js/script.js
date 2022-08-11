@@ -8,9 +8,9 @@ const otherItems1 = document.querySelectorAll('.percent')
 console.log(otherItems1);
 const otherItems2 = document.querySelectorAll('.number')
 console.log(otherItems2);
-const inputType = document.querySelector('.rollback > input[type="range"]')
+const inputType = document.querySelector('.rollback input[type="range"]')
 console.log(inputType);
-const span = document.querySelector('.rollback > .range-value')
+const span = document.querySelector('.rollback .range-value')
 console.log(span);
 const totalInput = document.getElementsByClassName('total-input')
 for (let i = 0; i < totalInput.length; i++) {
