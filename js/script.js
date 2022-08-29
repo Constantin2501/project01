@@ -16,7 +16,6 @@ const totalCountOther = document.getElementsByClassName('total-input')[2]
 const fullTotalCount = document.getElementsByClassName('total-input')[3]
 const totalCountRollback = document.getElementsByClassName('total-input')[4]
 
-
 let screen = document.querySelectorAll('.screen')
 
 
@@ -26,7 +25,8 @@ const appData = {
  screens: [],
  screenPrice: 0,
  adaptive: true,
- rollback: 10,
+ checkStartValue: true,
+ rollback: 0,
  fullPrice: 0,
  servicePercentPrice: 0,
  servicePricesPercent: 0,
@@ -36,12 +36,38 @@ const appData = {
  init: function() {
   appData.addTitle()
 
-  startBtn.addEventListener('click', appData.start)
+  startBtn.addEventListener('click', appData.checkScreens)
+  
   screenBtn.addEventListener('click', appData.addScreenBlock)
+
+  inputType.addEventListener('input', appData.addRollback)
  },
 
  addTitle: function() {
   document.title = title.textContent
+ },
+
+ addRollback: function(event) {
+   span.textContent = event.target.value + '%'
+   appData.rollback = span.textContent
+
+  
+ },
+
+ checkScreens: function() {
+  screen = document.querySelectorAll('.screen')
+  
+  screen.forEach(function(screen) {
+    if (screen.querySelector('select').value === '' || screen.querySelector('input').value === '') {
+      appData.checkStartValue = true
+    } else {
+      appData.checkStartValue = false
+    }
+
+    if (!appData.checkStartValue) {
+      appData.start()
+    }
+  })
  },
 
  addScreenBlock: function() {
@@ -74,6 +100,7 @@ const appData = {
 
   addScreens: function() {
     screen = document.querySelectorAll('.screen')
+    startBtn.disabled = true
 
     screen.forEach(function(screen, index) {
       const select = screen.querySelector('select')
@@ -86,7 +113,6 @@ const appData = {
         price: +select.value * +input.value
       })
     })
-    console.log(appData.screens);
   },
 
   addServices: function () {
@@ -147,6 +173,7 @@ const appData = {
 
     // appData.logger()
     appData.showResult()
+    console.log(appData);
   }
 
 }
