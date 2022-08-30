@@ -28,6 +28,7 @@ const appData = {
  checkStartValue: true,
  rollback: 0,
  fullPrice: 0,
+ count: 0,
  servicePercentPrice: 0,
  servicePricesPercent: 0,
  servicePricesNumber: 0,
@@ -50,6 +51,8 @@ const appData = {
  addRollback: function(event) {
    span.textContent = event.target.value + '%'
    appData.rollback = span.textContent
+   inputType.textContent = event.target.value
+   appData.rollback = +inputType.textContent
 
   
  },
@@ -90,17 +93,19 @@ const appData = {
     }
 
     appData.fullPrice = +appData.screenPrice + appData.servicePricesNumber + appData.servicePricesPercent
+    appData.servicePercentPrice = appData.fullPrice - (appData.fullPrice * (appData.rollback / 100))
   },
 
   showResult: function() {
     total.value = appData.screenPrice
     totalCountOther.value = appData.servicePricesPercent + appData.servicePricesNumber
     fullTotalCount.value = appData.fullPrice
+    totalCountRollback.value = appData.servicePercentPrice
+    totalCount.value = appData.count
   },
 
   addScreens: function() {
     screen = document.querySelectorAll('.screen')
-    startBtn.disabled = true
 
     screen.forEach(function(screen, index) {
       const select = screen.querySelector('select')
@@ -112,6 +117,7 @@ const appData = {
         name: selectName, 
         price: +select.value * +input.value
       })
+        appData.count = +input.value
     })
   },
 
